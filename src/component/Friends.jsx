@@ -12,7 +12,7 @@ function Friends({friendData,selectSplitBillPerson,splitBillPerson}) {
                         <p className="green">{friendData.name} owes you {Math.abs(friendData.balance)}€</p>
                     )
                 }
-            <button className="button" onClick={()=>{selectSplitBillPerson(friendData.id)}}>Select</button>
+            <button className="button" onClick={()=>{selectSplitBillPerson(friendData)}}>{splitBillPerson.id===friendData.id?'Close':'Select'}</button>
         </li>
     )
 }

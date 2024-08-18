@@ -11,17 +11,17 @@ function AppComponent() {
     const [data, setData] = useState(initialFriends)
     const [showForm, setShowForm] = useState(false)
     const [splitBillPerson, setSplitBillPerson] = useState({})
-    const [openSplitBillForm, setOpenSplitBillForm] = useState(false)
+    // const [openSplitBillForm, setOpenSplitBillForm] = useState(false)
 
    
     const showFormEventFunction = ()=>{
         setShowForm(!showForm)
     }
+console.log(splitBillPerson)
 
-
-    const selectSplitBillPerson = (id)=>{
-        setSplitBillPerson(...data.filter(ele=> ele.id===id))
-        setOpenSplitBillForm(true)
+    const selectSplitBillPerson = (person)=>{
+        setSplitBillPerson((selected)=>(selected.id===person.id?{}: person))
+        // setOpenSplitBillForm(true)
     }
 
 
@@ -39,6 +39,7 @@ function AppComponent() {
 
     const updateBalance = (bal)=>{
         console.log(bal)
+        if(!splitBillPerson) return; 
         setData(currData=>(
             currData.map(ele=>{
                 if(ele.id===splitBillPerson.id){
@@ -51,7 +52,7 @@ function AppComponent() {
                 }
             })
         ))
-        setOpenSplitBillForm(false)
+        // setOpenSplitBillForm(false)
     }
 
     return (
@@ -66,7 +67,7 @@ function AppComponent() {
             <Button clickEvent={showFormEventFunction}>{ showForm ? <span>Close</span> : <span>Add Friend</span>}</Button>
             </div>
             {
-                (openSplitBillForm)
+                (Object.keys(splitBillPerson).length!==0)
                 &&
                 <div className="sidebar">
                     <SplitBillForm person={splitBillPerson} updateBalance={updateBalance} />
