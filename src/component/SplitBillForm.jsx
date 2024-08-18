@@ -17,6 +17,7 @@ function SplitBillForm({person,updateBalance}) {
 
     const handleSubmission = (e)=>{
         e.preventDefault();
+        if(!formData.bill || !formData.expense) return;
         let bill ;
         if(formData.billpayment==='you'){
             bill = friendExpense

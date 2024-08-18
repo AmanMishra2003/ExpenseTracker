@@ -18,6 +18,9 @@ function Form({id,AddFriend}) {
 
     const handleSubmission = (e)=>{
         e.preventDefault();
+
+        if(!formData.name || !formData.image) return;
+
         AddFriend(formData);
     }
 
