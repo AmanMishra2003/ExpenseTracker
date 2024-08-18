@@ -2,11 +2,11 @@ import { useState } from "react";
 import Button from "./Button";
 function SplitBillForm({person,updateBalance}) {
     const [formData, setFormData] = useState({bill:null,expense:null, billpayment:'you'})
-    const friendExpense = formData.bill - formData.expense;
+    const friendExpense = formData.bill - formData.expense 
     const handleChange = (e)=>{
         const name = e.target.name;
-        const value = e.target.value;
-      
+        let value=e.target.value ;
+
         setFormData(currData=>(
             {
                 ...currData,
@@ -17,19 +17,16 @@ function SplitBillForm({person,updateBalance}) {
 
     const handleSubmission = (e)=>{
         e.preventDefault();
-        if(!formData.bill || !formData.expense) return;
+        if(!formData.bill) return;
         let bill ;
         if(formData.billpayment==='you'){
             bill = friendExpense
         }else{
-            if(formData.expense!==0){
-                bill =  -(formData.expense)
-            }
-            bill =  (friendExpense - formData.bill)
+            bill =  -(formData.expense)
         }
 
         updateBalance(bill)
-        setFormData({bill:0,expense:0, billpayment:''})
+        setFormData({bill:null,expense:null, billpayment:''})
     }
 
     return (

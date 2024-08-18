@@ -21,7 +21,7 @@ console.log(splitBillPerson)
 
     const selectSplitBillPerson = (person)=>{
         setSplitBillPerson((selected)=>(selected.id===person.id?{}: person))
-        // setOpenSplitBillForm(true)
+        setShowForm(false)
     }
 
 
