@@ -57,7 +57,7 @@ function AppComponent() {
     return (
         <div className="app">
             <div className="sidebar">
-            <FriendList friends={data} selectSplitBillPerson={selectSplitBillPerson}/>
+            <FriendList friends={data} selectSplitBillPerson={selectSplitBillPerson} splitBillPerson={splitBillPerson}/>
             {
                 showForm
                 &&

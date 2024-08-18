@@ -1,10 +1,8 @@
 import { useState } from "react";
 import Button from "./Button";
 function SplitBillForm({person,updateBalance}) {
-    const [formData, setFormData] = useState({bill:null,expense:null, billpayment:''})
+    const [formData, setFormData] = useState({bill:null,expense:null, billpayment:'you'})
     const friendExpense = formData.bill - formData.expense;
-
-
     const handleChange = (e)=>{
         const name = e.target.name;
         const value = e.target.value;
@@ -23,9 +21,11 @@ function SplitBillForm({person,updateBalance}) {
         if(formData.billpayment==='you'){
             bill = friendExpense
         }else{
-            bill =  -formData.expense
+            if(formData.expense!==0){
+                bill =  -(formData.expense)
+            }
+            bill =  (friendExpense - formData.bill)
         }
-        console.log(bill)
 
         updateBalance(bill)
         setFormData({bill:0,expense:0, billpayment:''})

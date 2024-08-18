@@ -1,6 +1,6 @@
-function Friends({friendData,selectSplitBillPerson}) {
+function Friends({friendData,selectSplitBillPerson,splitBillPerson}) {
     return (
-        <li>
+        <li className={splitBillPerson.id===friendData.id?'selected':null}>
             <img src={friendData.image} alt="" />
             <h3>{friendData.name}</h3>
                 {
