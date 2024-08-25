@@ -52,7 +52,7 @@ console.log(splitBillPerson)
                 }
             })
         ))
-        // setOpenSplitBillForm(false)
+        setSplitBillPerson({})
     }
 
     return (
@@ -70,7 +70,7 @@ console.log(splitBillPerson)
                 (Object.keys(splitBillPerson).length!==0)
                 &&
                 <div className="sidebar">
-                    <SplitBillForm person={splitBillPerson} updateBalance={updateBalance} />
+                    <SplitBillForm person={splitBillPerson} updateBalance={updateBalance} key={splitBillPerson.id} />
                 </div>
             }
         </div>
